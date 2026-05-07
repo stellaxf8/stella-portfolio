@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stella Fuentes — AI & Data Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-secondary: #f7f7f5;
+      --bg-tertiary: #f0f0ec;
+      --text-primary: #1a1a18;
+      --text-secondary: #5c5c58;
+      --text-tertiary: #9a9a94;
+      --border: rgba(0,0,0,0.1);
+      --border-hover: rgba(0,0,0,0.2);
+      --accent: #185FA5;
+      --accent-bg: #e6f1fb;
+      --accent-text: #0c447c;
+      --success-bg: #eaf3de;
+      --success-text: #3b6d11;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a18;
+        --bg-secondary: #222220;
+        --bg-tertiary: #2a2a27;
+        --text-primary: #f0f0ec;
+        --text-secondary: #a0a09a;
+        --text-tertiary: #606060;
+        --border: rgba(255,255,255,0.1);
+        --border-hover: rgba(255,255,255,0.2);
+        --accent-bg: #0c2a45;
+        --accent-text: #85b7eb;
+        --success-bg: #173404;
+        --success-text: #97c459;
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 40px;
+    }
+
+    .nav-name {
+      font-weight: 500;
+      font-size: 15px;
+      color: var(--text-primary);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    /* Hero */
+    .hero {
+      padding: 72px 40px 60px;
+      border-bottom: 0.5px solid var(--border);
+      max-width: 800px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: var(--accent-bg);
+      color: var(--accent-text);
+      margin-bottom: 18px;
+      letter-spacing: 0.03em;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin-bottom: 28px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      padding: 9px 20px;
+      border-radius: var(--radius-md);
+      background: var(--text-primary);
+      color: var(--bg);
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { opacity: 0.8; }
+
+    .btn-secondary {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      padding: 9px 20px;
+      border-radius: var(--radius-md);
+      background: transparent;
+      color: var(--text-primary);
+      border: 0.5px solid var(--border-hover);
+      cursor: pointer;
+      transition: background 0.15s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover { background: var(--bg-secondary); }
+
+    /* Projects */
+    .projects {
+      padding: 48px 40px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      color: var(--text-tertiary);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      padding: 5px 16px;
+      border-radius: 20px;
+      border: 0.5px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .filter-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
+
+    .filter-btn.active {
+      border-color: var(--border-hover);
+      color: var(--text-primary);
+      background: var(--bg-secondary);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+
+    .card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .card.hidden { display: none; }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .card-icon {
+      font-size: 22px;
+      color: var(--accent);
+    }
+
+    .tag {
+      font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      padding: 2px 9px;
+      border-radius: 20px;
+    }
+
+    .tag-ai { background: var(--accent-bg); color: var(--accent-text); }
+    .tag-data { background: var(--success-bg); color: var(--success-text); }
+
+    .screenshot-box {
+      width: 100%;
+      height: 100px;
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 0.5px solid var(--border);
+    }
+
+    .screenshot-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .screenshot-placeholder {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .card-tools {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .tool-tag {
+      font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      color: var(--text-tertiary);
+      border: 0.5px solid var(--border);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .card-link {
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 4px;
+      width: fit-content;
+    }
+
+    .card-link:hover { opacity: 0.7; }
+
+    .card-placeholder {
+      background: var(--bg-secondary);
+      border: 0.5px dashed var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px;
+      gap: 10px;
+    }
+
+    .card-placeholder.hidden { display: none; }
+
+    .placeholder-icon {
+      font-size: 28px;
+      color: var(--text-tertiary);
+    }
+
+    .placeholder-text {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* Contact */
+    .contact {
+      padding: 48px 40px;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      background: var(--bg-secondary);
+    }
+
+    .contact h3 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .contact p {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    footer {
+      padding: 20px 40px;
+      border-top: 0.5px solid var(--border);
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-family: 'DM Mono', monospace;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero, .card, .card-placeholder {
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.1s; }
+    .card:nth-child(3) { animation-delay: 0.15s; }
+    .card-placeholder { animation-delay: 0.2s; }
+
+    @media (max-width: 600px) {
+      nav { padding: 14px 20px; }
+      .hero { padding: 48px 20px 40px; }
+      .hero h1 { font-size: 28px; }
+      .projects { padding: 36px 20px; }
+      .contact { padding: 36px 20px; }
+      footer { padding: 16px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">stella.f</span>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero" id="about">
+    <div class="badge">AI & Data Analyst</div>
+    <h1>Stella Fuentes</h1>
+    <p>Entry-level AI & data professional building practical tools that help business teams work smarter.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#projects">View projects</a>
+      <a class="btn-secondary" href="#contact">Contact me</a>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <div class="section-label">Projects</div>
+    <div class="filters">
+      <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+      <button class="filter-btn" onclick="filterCards('ai', this)">AI</button>
+      <button class="filter-btn" onclick="filterCards('data', this)">Data</button>
+    </div>
+    <div class="cards">
+
+      <div class="card" data-cat="ai">
+        <div class="card-top">
+          <i class="ti ti-clipboard-check card-icon" aria-hidden="true"></i>
+          <span class="tag tag-ai">AI</span>
+        </div>
+        <div class="screenshot-box">
+          <span class="screenshot-placeholder">Live project ↗</span>
+        </div>
+        <div class="card-title">AI Readiness Assessment</div>
+        <div class="card-desc">An interactive website that helps organisations evaluate their readiness to adopt AI tools and processes.</div>
+        <div class="card-tools">
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">Replit</span>
+        </div>
+        <a class="card-link" href="https://replit.com/@stella-f/AI-Readiness-Assessment" target="_blank">
+          View project <i class="ti ti-external-link" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="card" data-cat="ai">
+        <div class="card-top">
+          <i class="ti ti-file-search card-icon" aria-hidden="true"></i>
+          <span class="tag tag-ai">AI</span>
+        </div>
+        <div class="screenshot-box">
+          <!-- Replace the line below with: <img src="rfp-screenshot.png" alt="RFP Analysis Platform screenshot"> -->
+          <span class="screenshot-placeholder">Screenshot coming soon</span>
+        </div>
+        <div class="card-title">RFP Analysis Platform</div>
+        <div class="card-desc">An AI-powered tool built for a BA team to analyse and extract insights from RFP documents, reducing manual review time.</div>
+        <div class="card-tools">
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">Replit</span>
+        </div>
+      </div>
+
+      <div class="card" data-cat="ai">
+        <div class="card-top">
+          <i class="ti ti-bolt card-icon" aria-hidden="true"></i>
+          <span class="tag tag-ai">AI</span>
+        </div>
+        <div class="screenshot-box">
+          <!-- Replace the line below with: <img src="powerautomate-screenshot.png" alt="Power Automate workflows screenshot"> -->
+          <span class="screenshot-placeholder">Screenshot coming soon</span>
+        </div>
+        <div class="card-title">Automated Workflows</div>
+        <div class="card-desc">A series of automated business workflows built in Power Automate to reduce manual tasks and improve team efficiency.</div>
+        <div class="card-tools">
+          <span class="tool-tag">Power Automate</span>
+          <span class="tool-tag">Microsoft 365</span>
+        </div>
+      </div>
+
+      <div class="card-placeholder" data-cat="data">
+        <i class="ti ti-chart-bar placeholder-icon" aria-hidden="true"></i>
+        <div class="placeholder-text">Data project in progress<br>Power BI / Tableau</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div>
+      <h3>Get in touch</h3>
+      <p>Open to entry-level AI and data analyst roles.</p>
+    </div>
+    <div class="contact-links">
+      <!-- Add your email and LinkedIn links below -->
+      <a class="btn-primary" href="mailto:stellafuentes@redpilllabs.com">Email me</a>
+      <a class="btn-secondary" href="https://linkedin.com/in/stellafuentes" target="_blank">LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Stella Fuentes
+  </footer>
+
+  <script>
+    function filterCards(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.card, .card-placeholder').forEach(card => {
+        if (cat === 'all' || card.dataset.cat === cat) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
