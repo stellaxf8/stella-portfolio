@@ -1,51 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stella Fuentes — AI & Data Analyst</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" />
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-sans); }
-.nav { display: flex; justify-content: space-between; align-items: center; padding: 14px 28px; border-bottom: 0.5px solid var(--color-border-tertiary); position: sticky; top: 0; background: var(--color-background-primary); z-index: 10; }
-.nav-name { font-weight: 500; font-size: 15px; color: var(--color-text-primary); }
-.nav-links { display: flex; gap: 24px; }
-.nav-links a { font-size: 13px; color: var(--color-text-secondary); text-decoration: none; cursor: pointer; }
-.nav-links a:hover { color: var(--color-text-primary); }
-.hero { padding: 52px 28px 44px; border-bottom: 0.5px solid var(--color-border-tertiary); }
-.badge { display: inline-block; font-size: 11px; padding: 3px 12px; border-radius: 20px; background: var(--color-background-info); color: var(--color-text-info); margin-bottom: 14px; }
-.hero h1 { font-size: 32px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 10px; }
-.hero p { font-size: 15px; color: var(--color-text-secondary); max-width: 520px; line-height: 1.7; margin-bottom: 24px; }
-.hero-btns { display: flex; gap: 10px; }
-.btn-primary { font-size: 13px; padding: 8px 18px; border-radius: var(--border-radius-md); background: var(--color-text-primary); color: var(--color-background-primary); border: none; cursor: pointer; }
-.btn-primary:hover { opacity: 0.85; }
-.btn-secondary { font-size: 13px; padding: 8px 18px; border-radius: var(--border-radius-md); background: transparent; color: var(--color-text-primary); border: 0.5px solid var(--color-border-secondary); cursor: pointer; }
-.btn-secondary:hover { background: var(--color-background-secondary); }
-.projects { padding: 32px 28px; }
-.section-label { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
-.filters { display: flex; gap: 8px; margin-bottom: 24px; }
-.filter-btn { font-size: 12px; padding: 5px 14px; border-radius: 20px; border: 0.5px solid var(--color-border-tertiary); background: transparent; color: var(--color-text-secondary); cursor: pointer; }
-.filter-btn.active { border-color: var(--color-border-primary); color: var(--color-text-primary); background: var(--color-background-secondary); }
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
-.card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 8px; transition: border-color 0.15s; }
-.card:hover { border-color: var(--color-border-secondary); }
-.card.hidden { display: none; }
-.card-top { display: flex; justify-content: space-between; align-items: flex-start; }
-.card-icon { font-size: 20px; color: var(--color-text-info); }
-.tag { font-size: 11px; padding: 2px 9px; border-radius: 20px; }
-.tag-ai { background: var(--color-background-info); color: var(--color-text-info); }
-.tag-data { background: var(--color-background-success); color: var(--color-text-success); }
-.card-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
-.card-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; flex: 1; }
-.card-tools { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 4px; }
-.tool-tag { font-size: 11px; color: var(--color-text-tertiary); border: 0.5px solid var(--color-border-tertiary); padding: 2px 7px; border-radius: 4px; }
-.card-link { font-size: 12px; color: var(--color-text-info); text-decoration: none; display: flex; align-items: center; gap: 4px; margin-top: 4px; }
-.card-link:hover { opacity: 0.75; }
-.card-placeholder { background: var(--color-background-secondary); border: 0.5px dashed var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.1rem 1.25rem; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 160px; gap: 8px; }
-.card-placeholder.hidden { display: none; }
-.placeholder-icon { font-size: 24px; color: var(--color-text-tertiary); }
-.placeholder-text { font-size: 12px; color: var(--color-text-tertiary); text-align: center; }
-.screenshot-box { width: 100%; height: 90px; background: var(--color-background-tertiary); border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 4px; overflow: hidden; }
-.screenshot-box img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--border-radius-md); }
-.screenshot-placeholder { font-size: 11px; color: var(--color-text-tertiary); }
-.contact { padding: 32px 28px; border-top: 0.5px solid var(--color-border-tertiary); display: flex; justify-content: space-between; align-items: center; }
-.contact-text h3 { font-size: 16px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
-.contact-text p { font-size: 13px; color: var(--color-text-secondary); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: #fff; color: #111; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+  /* Nav */
+  .nav { display: flex; justify-content: space-between; align-items: center; padding: 14px 28px; border-bottom: 1px solid #ebebeb; position: sticky; top: 0; background: #fff; z-index: 10; }
+  .nav-name { font-weight: 500; font-size: 15px; color: #111; }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a { font-size: 13px; color: #666; text-decoration: none; cursor: pointer; }
+  .nav-links a:hover { color: #111; }
+
+  /* Hero */
+  .hero { padding: 52px 28px 44px; border-bottom: 1px solid #ebebeb; }
+  .badge { display: inline-block; font-size: 11px; padding: 3px 12px; border-radius: 20px; background: #e8f0fe; color: #1a56db; margin-bottom: 14px; }
+  .hero h1 { font-size: 32px; font-weight: 500; color: #111; margin-bottom: 10px; }
+  .hero p { font-size: 15px; color: #555; max-width: 520px; line-height: 1.7; margin-bottom: 24px; }
+  .hero-btns { display: flex; gap: 10px; }
+  .btn-primary { font-size: 13px; padding: 8px 18px; border-radius: 8px; background: #111; color: #fff; border: none; cursor: pointer; }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-secondary { font-size: 13px; padding: 8px 18px; border-radius: 8px; background: transparent; color: #111; border: 1px solid #d1d1d1; cursor: pointer; }
+  .btn-secondary:hover { background: #f5f5f5; }
+
+  /* Projects */
+  .projects { padding: 32px 28px; }
+  .section-label { font-size: 11px; font-weight: 500; color: #999; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+  .filters { display: flex; gap: 8px; margin-bottom: 24px; }
+  .filter-btn { font-size: 12px; padding: 5px 14px; border-radius: 20px; border: 1px solid #e0e0e0; background: transparent; color: #666; cursor: pointer; }
+  .filter-btn.active { border-color: #aaa; color: #111; background: #f5f5f5; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+
+  /* Card */
+  .card { background: #fff; border: 1px solid #ebebeb; border-radius: 12px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 8px; transition: border-color 0.15s; }
+  .card:hover { border-color: #bbb; }
+  .card.hidden { display: none; }
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .card-icon { font-size: 20px; color: #1a56db; }
+  .tag { font-size: 11px; padding: 2px 9px; border-radius: 20px; }
+  .tag-ai { background: #e8f0fe; color: #1a56db; }
+  .tag-data { background: #e6f4ea; color: #1e7e34; }
+  .card-title { font-size: 14px; font-weight: 500; color: #111; }
+  .card-desc { font-size: 12px; color: #666; line-height: 1.6; flex: 1; }
+  .card-tools { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 4px; }
+  .tool-tag { font-size: 11px; color: #888; border: 1px solid #e8e8e8; padding: 2px 7px; border-radius: 4px; }
+  .card-link { font-size: 12px; color: #1a56db; text-decoration: none; display: flex; align-items: center; gap: 4px; margin-top: 4px; }
+  .card-link:hover { opacity: 0.75; }
+
+  /* Screenshot box */
+  .screenshot-box { width: 100%; height: 90px; background: #f5f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 4px; overflow: hidden; }
+  .screenshot-box img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+  .screenshot-placeholder { font-size: 11px; color: #aaa; }
+
+  /* Placeholder card */
+  .card-placeholder { background: #fafafa; border: 1px dashed #e0e0e0; border-radius: 12px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 160px; gap: 8px; }
+  .card-placeholder.hidden { display: none; }
+  .placeholder-icon { font-size: 24px; color: #bbb; }
+  .placeholder-text { font-size: 12px; color: #aaa; text-align: center; }
+
+  /* Contact */
+  .contact { padding: 32px 28px; border-top: 1px solid #ebebeb; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .contact-text h3 { font-size: 16px; font-weight: 500; color: #111; margin-bottom: 4px; }
+  .contact-text p { font-size: 13px; color: #666; }
 </style>
+</head>
+<body>
 
 <h2 class="sr-only">Stella Fuentes — AI and data analyst portfolio showcasing five AI projects with filterable project cards</h2>
 
@@ -173,7 +197,7 @@ body { font-family: var(--font-sans); }
     <h3>Get in touch</h3>
     <p>Open to entry-level AI and data analyst roles.</p>
   </div>
-  <button class="btn-primary" onclick="sendPrompt('Help me write a contact section or email for my portfolio')">Set up contact ↗</button>
+  <a href="mailto:your@email.com" class="btn-primary" style="text-decoration:none;">Contact me</a>
 </section>
 
 <script>
@@ -189,3 +213,6 @@ function filterCards(cat, btn) {
   });
 }
 </script>
+
+</body>
+</html>
