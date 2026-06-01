@@ -7,11 +7,11 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" />
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: #fff; color: #111; }
-  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: #fff; color: #111; font-size: 16px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 
   /* Nav */
-  .nav { display: flex; justify-content: space-between; align-items: center; padding: 14px 28px; border-bottom: 1px solid #ebebeb; position: sticky; top: 0; background: #fff; z-index: 10; }
+  .nav { display: flex; justify-content: space-between; align-items: center; padding: 14px 28px; border-bottom: 1px solid #ebebeb; background: #fff; }
   .nav-name { font-weight: 500; font-size: 15px; color: #111; }
   .nav-links { display: flex; gap: 24px; }
   .nav-links a { font-size: 13px; color: #666; text-decoration: none; cursor: pointer; }
@@ -19,59 +19,64 @@
 
   /* Hero */
   .hero { padding: 52px 28px 44px; border-bottom: 1px solid #ebebeb; }
-  .badge { display: inline-block; font-size: 11px; padding: 3px 12px; border-radius: 20px; background: #e8f0fe; color: #1a56db; margin-bottom: 14px; }
+  .badge { display: inline-block; font-size: 11px; padding: 3px 12px; border-radius: 20px; background: #dbeafe; color: #1d4ed8; margin-bottom: 14px; font-weight: 500; }
   .hero h1 { font-size: 32px; font-weight: 500; color: #111; margin-bottom: 10px; }
-  .hero p { font-size: 15px; color: #555; max-width: 520px; line-height: 1.7; margin-bottom: 24px; }
+  .hero > p { font-size: 15px; color: #555; max-width: 520px; line-height: 1.7; margin-bottom: 24px; }
   .hero-btns { display: flex; gap: 10px; }
-  .btn-primary { font-size: 13px; padding: 8px 18px; border-radius: 8px; background: #111; color: #fff; border: none; cursor: pointer; }
+  .btn-primary { font-size: 13px; padding: 8px 18px; border-radius: 8px; background: #111; color: #fff; border: none; cursor: pointer; text-decoration: none; display: inline-block; }
   .btn-primary:hover { opacity: 0.85; }
-  .btn-secondary { font-size: 13px; padding: 8px 18px; border-radius: 8px; background: transparent; color: #111; border: 1px solid #d1d1d1; cursor: pointer; }
+  .btn-secondary { font-size: 13px; padding: 8px 18px; border-radius: 8px; background: #fff; color: #111; border: 1px solid #d1d1d1; cursor: pointer; text-decoration: none; display: inline-block; }
   .btn-secondary:hover { background: #f5f5f5; }
 
   /* Projects */
   .projects { padding: 32px 28px; }
-  .section-label { font-size: 11px; font-weight: 500; color: #999; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+  .section-label { font-size: 11px; font-weight: 500; color: #aaa; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
   .filters { display: flex; gap: 8px; margin-bottom: 24px; }
-  .filter-btn { font-size: 12px; padding: 5px 14px; border-radius: 20px; border: 1px solid #e0e0e0; background: transparent; color: #666; cursor: pointer; }
-  .filter-btn.active { border-color: #aaa; color: #111; background: #f5f5f5; }
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .filter-btn { font-size: 12px; padding: 5px 14px; border-radius: 20px; border: 1px solid #e0e0e0; background: #fff; color: #666; cursor: pointer; }
+  .filter-btn.active { border-color: #999; color: #111; background: #f5f5f5; }
+  .filter-btn:hover { background: #f5f5f5; }
+
+  /* Cards grid */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
 
   /* Card */
-  .card { background: #fff; border: 1px solid #ebebeb; border-radius: 12px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 8px; transition: border-color 0.15s; }
+  .card { background: #fff; border: 1px solid #e8e8e8; border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; transition: border-color 0.15s; }
   .card:hover { border-color: #bbb; }
   .card.hidden { display: none; }
   .card-top { display: flex; justify-content: space-between; align-items: flex-start; }
-  .card-icon { font-size: 20px; color: #1a56db; }
-  .tag { font-size: 11px; padding: 2px 9px; border-radius: 20px; }
-  .tag-ai { background: #e8f0fe; color: #1a56db; }
-  .tag-data { background: #e6f4ea; color: #1e7e34; }
+  .card-icon { font-size: 20px; color: #2563eb; }
+  .tag { font-size: 11px; padding: 2px 9px; border-radius: 20px; font-weight: 500; }
+  .tag-ai { background: #dbeafe; color: #1d4ed8; }
+  .tag-data { background: #dcfce7; color: #166534; }
+  .screenshot-box { width: 100%; height: 90px; background: #f3f4f6; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .screenshot-box img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; display: block; }
+  .screenshot-placeholder { font-size: 11px; color: #aaa; }
   .card-title { font-size: 14px; font-weight: 500; color: #111; }
   .card-desc { font-size: 12px; color: #666; line-height: 1.6; flex: 1; }
-  .card-tools { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 4px; }
-  .tool-tag { font-size: 11px; color: #888; border: 1px solid #e8e8e8; padding: 2px 7px; border-radius: 4px; }
-  .card-link { font-size: 12px; color: #1a56db; text-decoration: none; display: flex; align-items: center; gap: 4px; margin-top: 4px; }
+  .card-tools { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 2px; }
+  .tool-tag { font-size: 11px; color: #888; border: 1px solid #e8e8e8; padding: 2px 8px; border-radius: 5px; background: #fff; }
+  .card-link { font-size: 12px; color: #2563eb; text-decoration: none; display: flex; align-items: center; gap: 4px; margin-top: 2px; }
   .card-link:hover { opacity: 0.75; }
 
-  /* Screenshot box */
-  .screenshot-box { width: 100%; height: 90px; background: #f5f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 4px; overflow: hidden; }
-  .screenshot-box img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
-  .screenshot-placeholder { font-size: 11px; color: #aaa; }
-
   /* Placeholder card */
-  .card-placeholder { background: #fafafa; border: 1px dashed #e0e0e0; border-radius: 12px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 160px; gap: 8px; }
+  .card-placeholder { background: #f9fafb; border: 1px dashed #e0e0e0; border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 180px; gap: 8px; }
   .card-placeholder.hidden { display: none; }
-  .placeholder-icon { font-size: 24px; color: #bbb; }
-  .placeholder-text { font-size: 12px; color: #aaa; text-align: center; }
+  .placeholder-icon { font-size: 24px; color: #ccc; }
+  .placeholder-text { font-size: 12px; color: #aaa; text-align: center; line-height: 1.6; }
 
   /* Contact */
-  .contact { padding: 32px 28px; border-top: 1px solid #ebebeb; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-  .contact-text h3 { font-size: 16px; font-weight: 500; color: #111; margin-bottom: 4px; }
-  .contact-text p { font-size: 13px; color: #666; }
+  .contact { padding: 40px 28px; border-top: 1px solid #ebebeb; background: #f9fafb; }
+  .contact h3 { font-size: 18px; font-weight: 500; color: #111; margin-bottom: 6px; }
+  .contact p { font-size: 13px; color: #666; margin-bottom: 20px; }
+
+  /* Footer */
+  footer { padding: 20px 28px; border-top: 1px solid #ebebeb; background: #f9fafb; }
+  footer p { font-size: 12px; color: #aaa; }
 </style>
 </head>
 <body>
 
-<h2 class="sr-only">Stella Fuentes — AI and data analyst portfolio showcasing five AI projects with filterable project cards</h2>
+<h2 class="sr-only">Stella Fuentes — AI and data analyst portfolio with five AI projects</h2>
 
 <nav class="nav">
   <span class="nav-name">Stella Fuentes</span>
@@ -193,12 +198,14 @@
 </section>
 
 <section class="contact" id="contact">
-  <div class="contact-text">
-    <h3>Get in touch</h3>
-    <p>Open to entry-level AI and data analyst roles.</p>
-  </div>
-  <a href="mailto:your@email.com" class="btn-primary" style="text-decoration:none;">Contact me</a>
+  <h3>Get in touch</h3>
+  <p>Open to entry-level AI and data analyst roles.</p>
+  <a href="mailto:your@email.com" class="btn-primary">Contact me</a>
 </section>
+
+<footer>
+  <p>© 2026 Stella Fuentes</p>
+</footer>
 
 <script>
 function filterCards(cat, btn) {
